@@ -12,6 +12,31 @@
   - 数据挖掘（计算机学院本部），闭卷
   - 大数据系统与大规模数据分析（计算所），闭卷
   - 分布式与并行计算技术（软件所），开卷
+ 
+其中，CV、NLP技术对跨模态技术的支撑关系无需多言。这里可以分享一下我对于Big Data Systems与Distributed Systems技术两个领域关系的理解：
+对于一切暴露API的系统，无论是向内还是向外，都可以从系统管理的资源及其提供的操作这些资源的API角度来理解系统。本质上，所有的API都可以分类为CRUD（Create, Read, Update, Delete）操作，不管系统有多复杂。每种资源抽象——无论是Key-Value Pairs、Files、Documents、Nodes and Edges、Tasks还是Datasets——都有与之相关的CRUD操作，这些操作使与系统的交互成为可能。
+在不同场景中，CRUD操作必须满足特定属性以满足系统要求。这些属性可以分类为：
+
+- 硬属性：系统正确运行所必需的基本保证，包括Consistency、Partition Tolerance、Fault Tolerance、Concurrency Control和ACID Properties等。
+- 软属性：增强系统性能和用户体验的理想特性，包括Scalability、Availability、Data Locality、高Performance和Efficiency等。
+
+每个属性都需要实施特定的机制。为了确保CRUD操作满足所需属性，人们已经提出了许多机制，举例如下：
+- Consistency：通过Quorum Consensus、Write Concern和ACID Transactions等机制实现。
+- Partition Tolerance：通过Consistent Hashing和Sharding实现。
+- Fault Tolerance：通过Replication、Task Re-execution、Checkpointing、Tuple Acknowledgement和Lineage确保。
+- Concurrency Control：通过Locks、MVCC（Multi-Version Concurrency Control）、Job Scheduling、Vertex Locking和Task Parallelism管理。
+- Scalability：通过Sharding、Horizontal Scaling、Distributed Processing、Partitioning和Parallelism实现。
+- Availability：通过Replication维护。
+- Data Locality：通过Data Placement、Locality-Aware Scheduling和Edge Partitioning增强。
+- High Performance：通过In-Memory Processing和In-Memory Computing实现。
+- Efficiency：通过Task Scheduling、Speculative Execution、Vertex Cut和Load Balancing优化。
+
+要全面掌握这些机制的功能及其实现方式，必须从Distributed Systems protocols的角度来理解它们。关键关注领域包括：
+- Consensus Protocols：确保多个分布式节点在面对可能存在的网络分区和节点故障时，能够就某一数据或操作达成一致，例如Paxos，Raft等。
+- Replication Protocols：用于在多个节点之间复制数据，以提高系统的可用性和容错能力，例如Primary-Backup Replication，Chain Replication，Gossip Protocols，Quorum-based Replication，Transaction Protocols等。
+- Transaction Protocols：用于管理分布式事务，确保在多个节点上执行的操作要么全部成功，要么全部失败，例如2PC等。
+- Leader Election Protocols：用于在分布式系统中选举一个领导者节点，以协调和管理其他节点，例如Bully等。
+- Membership Protocols：用于管理分布式系统中的节点成员资格，包括节点的加入、离开和失败检测，例如SWIM (Scalable Weakly-consistent Infection-style Membership)等。
 
 ## 课程简介
 
