@@ -21,15 +21,15 @@
 - 软属性：增强系统性能和用户体验的理想特性，包括Scalability、Availability、Data Locality、高Performance和Efficiency等。
 
 每个属性都需要实施特定的机制。为了确保CRUD操作满足所需属性，人们已经提出了许多机制，举例如下：
-- Consistency：通过Quorum Consensus、Write Concern和ACID Transactions等机制实现。
-- Partition Tolerance：通过Consistent Hashing和Sharding实现。
-- Fault Tolerance：通过Replication、Task Re-execution、Checkpointing、Tuple Acknowledgement和Lineage确保。
-- Concurrency Control：通过Locks、MVCC（Multi-Version Concurrency Control）、Job Scheduling、Vertex Locking和Task Parallelism管理。
-- Scalability：通过Sharding、Horizontal Scaling、Distributed Processing、Partitioning和Parallelism实现。
-- Availability：通过Replication维护。
-- Data Locality：通过Data Placement、Locality-Aware Scheduling和Edge Partitioning增强。
-- High Performance：通过In-Memory Processing和In-Memory Computing实现。
-- Efficiency：通过Task Scheduling、Speculative Execution、Vertex Cut和Load Balancing优化。
+- Consistency：确保数据在读取时始终是一致的，主要与Read和Update操作相关，通过Quorum Consensus、Write Concern和ACID Transactions等机制实现。
+- Partition Tolerance：保证系统在某些部分网络分区时仍能继续操作，主要影响Create、Read、Update和Delete操作，通过Consistent Hashing和Sharding实现。
+- Fault Tolerance：确保系统在某些节点故障时仍能正常运行，主要涉及Create和Update操作，通过Replication、Task Re-execution、Checkpointing、Tuple Acknowledgement和Lineage确保。
+- Concurrency Control：管理多个并发操作的执行顺序，防止冲突，主要与Update操作相关，通过Locks、MVCC（Multi-Version Concurrency Control）、Job Scheduling、Vertex Locking和Task Parallelism管理。
+- Scalability：系统能够处理不断增长的工作负载，主要影响Create和Read操作，通过Sharding、Horizontal Scaling、Distributed Processing、Partitioning和Parallelism实现。
+- Availability：保证系统在大部分时间内可用，主要涉及Read和Update操作，通过Replication维护。
+- Data Locality：优化数据放置以减少访问延迟，主要影响Read操作，通过Data Placement、Locality-Aware Scheduling和Edge Partitioning增强。
+- High Performance：提升系统的整体响应速度，主要影响Read和Update操作，通过In-Memory Processing和In-Memory Computing实现。
+- Efficiency：优化资源使用以提高系统效率，主要涉及Create和Update操作，通过Task Scheduling、Speculative Execution、Vertex Cut和Load Balancing优化。
 
 要全面掌握这些机制的功能及其实现方式，必须从Distributed Systems protocols的角度来理解它们。关键关注领域包括：
 - Consensus Protocols：确保多个分布式节点在面对可能存在的网络分区和节点故障时，能够就某一数据或操作达成一致，例如Paxos，Raft等。
