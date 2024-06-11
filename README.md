@@ -40,25 +40,25 @@
 
 下表简要列出了常见的大数据系统中的资源抽象与它们应满足的属性：
 
-| System                     | Resource Abstraction       | Medium       | APIs Exposed To       | Hard Properties       | Soft Properties       |
-|----------------------------|----------------------------|--------------|-----------------------|-----------------------|-----------------------|
-| Key-Value Store            | Key-value pairs            | Memory, Local Storage | Users | Consistency, Partition Tolerance | Scalability, Availability |
-| Distributed File System    | Files and directories      | Local Storage | Users | Fault Tolerance, Concurrency Control | Scalability, Data Locality |
-| Relational Database        | Tables, rows, columns      | Local Storage | Users | ACID, Consistency, Concurrency Control | Scalability |
-| Batch Processing System    | Large datasets             | Local Storage | Users | Data Locality | Scalability |
-| MapReduce                  | Tasks                      | Local Storage | Scheduler | Fault Tolerance | Scalability, Efficiency |
-| MapReduce                  | Data blocks                | Local Storage | Scheduler | Fault Tolerance | Scalability, Efficiency |
-| MongoDB                    | Documents                  | Memory, Local Storage | Users | Consistency, Partition Tolerance | Scalability, Availability |
-| Graph Database             | Nodes and edges            | Memory, Local Storage | Users | Consistency, Concurrency Control, Fault Tolerance | Scalability, Availability |
-| Pregel Model               | Vertices and edges         | Memory       | Scheduler | Concurrency Control, Fault Tolerance | Scalability, Efficiency, Data Locality |
-| Hadoop                     | Files                      | Local Storage | Users | Fault Tolerance, Concurrency Control | Scalability |
-| Hadoop                     | Tasks                      | Local Storage | Scheduler | Fault Tolerance, Concurrency Control | Scalability, Efficiency |
-| Hive                       | Tables                     | Local Storage | Users | Consistency, Concurrency Control | Scalability |
-| Hive                       | Rows, columns              | Local Storage | Users | Consistency, Concurrency Control | Scalability |
-| Storm                      | Streams                    | Memory       | Users | Fault Tolerance, Concurrency Control | High Performance, Scalability |
-| Storm                      | Tuples                     | Memory       | Scheduler | Fault Tolerance, Concurrency Control | High Performance, Scalability, Efficiency |
-| Spark                      | RDD (Resilient Distributed Dataset) | Memory, Local Storage | Users | Fault Tolerance, Concurrency Control | High Performance, Data Locality |
-| Spark                      | Tasks                      | Memory, Local Storage | Scheduler | Fault Tolerance, Concurrency Control | High Performance, Data Locality, Efficiency |
+| System                     | Resource Abstraction       | Medium       | C                     | R                     | U                     | D                     |
+|----------------------------|----------------------------|--------------|-----------------------|-----------------------|-----------------------|-----------------------|
+| Key-Value Store            | Key-value pairs            | Memory, Local Storage | Consistency, Partition Tolerance | Consistency, Availability | Consistency, Mutual Exclusion | Consistency, Availability |
+| Distributed File System    | Files and directories      | Local Storage | Fault Tolerance, Data Locality | Scalability, Fault Tolerance | Fault Tolerance, Concurrency Control | Fault Tolerance |
+| Relational Database        | Tables, rows, columns      | Local Storage | ACID, Consistency     | ACID, Concurrency Control | ACID, Concurrency Control | ACID, Consistency     |
+| Batch Processing System    | Large datasets             | Local Storage | Scalability           | Data Locality         | -                     | -                     |
+| MapReduce                  | Tasks                      | Local Storage | Scalability           | Data Locality         | Fault Tolerance       | Fault Tolerance       |
+| MapReduce                  | Data blocks                | Local Storage | Scalability           | Data Locality         | Fault Tolerance       | Fault Tolerance       |
+| MongoDB                    | Documents                  | Memory, Local Storage | Consistency, Partition Tolerance | Consistency, Availability | Consistency, Mutual Exclusion | Consistency, Availability |
+| Graph Database             | Nodes and edges            | Memory, Local Storage | Consistency, Fault Tolerance | Consistency, Availability | Consistency, Concurrency Control | Consistency, Fault Tolerance |
+| Pregel Model               | Vertices and edges         | Memory       | Scalability           | Data Locality         | Concurrency Control   | Fault Tolerance       |
+| Hadoop                     | Files                      | Local Storage | Fault Tolerance, Scalability | Scalability, Fault Tolerance | Fault Tolerance, Concurrency Control | Fault Tolerance |
+| Hadoop                     | Tasks                      | Local Storage | Fault Tolerance, Scalability | Scalability, Fault Tolerance | Fault Tolerance, Concurrency Control | Fault Tolerance |
+| Hive                       | Tables                     | Local Storage | Scalability, Consistency | Consistency, Scalability | Concurrency Control   | Scalability, Consistency |
+| Hive                       | Rows, columns              | Local Storage | Scalability, Consistency | Consistency, Scalability | Concurrency Control   | Scalability, Consistency |
+| Storm                      | Streams                    | Memory       | High Performance, Scalability | High Performance, Fault Tolerance | Fault Tolerance, Concurrency Control | Scalability, Fault Tolerance |
+| Storm                      | Tuples                     | Memory       | High Performance, Scalability | High Performance, Fault Tolerance | Fault Tolerance, Concurrency Control | Scalability, Fault Tolerance |
+| Spark                      | RDD (Resilient Distributed Dataset) | Memory, Local Storage | Fault Tolerance, Data Locality | High Performance, Data Locality | Fault Tolerance, Concurrency Control | Fault Tolerance |
+| Spark                      | Tasks                      | Memory, Local Storage | Fault Tolerance, Data Locality | High Performance, Data Locality | Fault Tolerance, Concurrency Control | Fault Tolerance |
 
 ## 课程简介
 
