@@ -38,6 +38,28 @@
 - Leader Election Protocols：用于在分布式系统中选举一个领导者节点，以协调和管理其他节点，例如Bully等。
 - Membership Protocols：用于管理分布式系统中的节点成员资格，包括节点的加入、离开和失败检测，例如SWIM (Scalable Weakly-consistent Infection-style Membership)等。
 
+下表简要列出了常见的大数据系统中的资源抽象与它们应满足的属性：
+
+| System                     | Resource Abstraction       | Medium       | APIs Exposed To       | Hard Properties       | Soft Properties       |
+|----------------------------|----------------------------|--------------|-----------------------|-----------------------|-----------------------|
+| Key-Value Store            | Key-value pairs            | Memory, Local Storage | Users | Consistency, Partition Tolerance | Scalability, Availability |
+| Distributed File System    | Files and directories      | Local Storage | Users | Fault Tolerance, Concurrency Control | Scalability, Data Locality |
+| Relational Database        | Tables, rows, columns      | Local Storage | Users | ACID, Consistency, Concurrency Control | Scalability |
+| Batch Processing System    | Large datasets             | Local Storage | Users | Data Locality | Scalability |
+| MapReduce                  | Tasks                      | Local Storage | Scheduler | Fault Tolerance | Scalability, Efficiency |
+| MapReduce                  | Data blocks                | Local Storage | Scheduler | Fault Tolerance | Scalability, Efficiency |
+| MongoDB                    | Documents                  | Memory, Local Storage | Users | Consistency, Partition Tolerance | Scalability, Availability |
+| Graph Database             | Nodes and edges            | Memory, Local Storage | Users | Consistency, Concurrency Control, Fault Tolerance | Scalability, Availability |
+| Pregel Model               | Vertices and edges         | Memory       | Scheduler | Concurrency Control, Fault Tolerance | Scalability, Efficiency, Data Locality |
+| Hadoop                     | Files                      | Local Storage | Users | Fault Tolerance, Concurrency Control | Scalability |
+| Hadoop                     | Tasks                      | Local Storage | Scheduler | Fault Tolerance, Concurrency Control | Scalability, Efficiency |
+| Hive                       | Tables                     | Local Storage | Users | Consistency, Concurrency Control | Scalability |
+| Hive                       | Rows, columns              | Local Storage | Users | Consistency, Concurrency Control | Scalability |
+| Storm                      | Streams                    | Memory       | Users | Fault Tolerance, Concurrency Control | High Performance, Scalability |
+| Storm                      | Tuples                     | Memory       | Scheduler | Fault Tolerance, Concurrency Control | High Performance, Scalability, Efficiency |
+| Spark                      | RDD (Resilient Distributed Dataset) | Memory, Local Storage | Users | Fault Tolerance, Concurrency Control | High Performance, Data Locality |
+| Spark                      | Tasks                      | Memory, Local Storage | Scheduler | Fault Tolerance, Concurrency Control | High Performance, Data Locality, Efficiency |
+
 ## 课程简介
 
 ### 分布式与并行计算技术
