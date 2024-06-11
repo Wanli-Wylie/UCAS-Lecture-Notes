@@ -14,6 +14,7 @@
   - 分布式与并行计算技术（软件所），开卷
  
 其中，CV、NLP技术对跨模态技术的支撑关系无需多言。这里可以分享一下我对于Big Data Systems与Distributed Systems技术两个领域关系的理解：
+
 对于一切暴露API的系统，无论是向内还是向外，都可以从系统管理的资源及其提供的操作这些资源的API角度来理解系统。本质上，所有的API都可以分类为CRUD（Create, Read, Update, Delete）操作，不管系统有多复杂。每种资源抽象——无论是Key-Value Pairs、Files、Documents、Nodes and Edges、Tasks还是Datasets——都有与之相关的CRUD操作，这些操作使与系统的交互成为可能。
 在不同场景中，CRUD操作必须满足特定属性以满足系统要求。这些属性可以分类为：
 
