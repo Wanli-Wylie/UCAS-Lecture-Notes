@@ -13,54 +13,6 @@
   - 大数据系统与大规模数据分析（计算所），闭卷
   - 分布式与并行计算技术（软件所），开卷
  
-其中，CV、NLP技术对跨模态技术的支撑关系无需多言。这里可以分享一下我对于Big Data Systems与Distributed Systems技术两个领域关系的理解：
-
-对于一切暴露API的系统，无论是向内还是向外，都可以从系统管理的资源及其提供的操作这些资源的API角度来理解系统。本质上，所有的API都可以分类为CRUD（Create, Read, Update, Delete）操作，不管系统有多复杂。每种资源抽象——无论是Key-Value Pairs、Files、Documents、Nodes and Edges、Tasks还是Datasets——都有与之相关的CRUD操作，这些操作使与系统的交互成为可能。
-在不同场景中，CRUD操作必须满足特定属性以满足系统要求。这些属性可以分类为：
-
-- 硬属性：系统正确运行所必需的基本保证，包括Consistency、Partition Tolerance、Fault Tolerance、Concurrency Control和ACID Properties等。
-- 软属性：增强系统性能和用户体验的理想特性，包括Scalability、Availability、Data Locality、高Performance和Efficiency等。
-
-每个属性都需要实施特定的机制。为了确保CRUD操作满足所需属性，人们已经提出了许多机制，举例如下：
-- Consistency：确保数据在读取时始终是一致的，主要与Read和Update操作相关，通过Quorum Consensus、Write Concern和ACID Transactions等机制实现。
-- Partition Tolerance：保证系统在某些部分网络分区时仍能继续操作，主要影响Create、Read、Update和Delete操作，通过Consistent Hashing和Sharding实现。
-- Fault Tolerance：确保系统在某些节点故障时仍能正常运行，主要涉及Create和Update操作，通过Replication、Task Re-execution、Checkpointing、Tuple Acknowledgement和Lineage确保。
-- Concurrency Control：管理多个并发操作的执行顺序，防止冲突，主要与Update操作相关，通过Locks、MVCC（Multi-Version Concurrency Control）、Job Scheduling、Vertex Locking和Task Parallelism管理。
-- Scalability：系统能够处理不断增长的工作负载，主要影响Create和Read操作，通过Sharding、Horizontal Scaling、Distributed Processing、Partitioning和Parallelism实现。
-- Availability：保证系统在大部分时间内可用，主要涉及Read和Update操作，通过Replication维护。
-- Data Locality：优化数据放置以减少访问延迟，主要影响Read操作，通过Data Placement、Locality-Aware Scheduling和Edge Partitioning增强。
-- High Performance：提升系统的整体响应速度，主要影响Read和Update操作，通过In-Memory Processing和In-Memory Computing实现。
-- Efficiency：优化资源使用以提高系统效率，主要涉及Create和Update操作，通过Task Scheduling、Speculative Execution、Vertex Cut和Load Balancing优化。
-
-要全面掌握这些机制的功能及其实现方式，必须从Distributed Systems protocols的角度来理解它们。关键关注领域包括：
-- Consensus Protocols：确保多个分布式节点在面对可能存在的网络分区和节点故障时，能够就某一数据或操作达成一致，例如Paxos，Raft等。
-- Replication Protocols：用于在多个节点之间复制数据，以提高系统的可用性和容错能力，例如Primary-Backup Replication，Chain Replication，Gossip Protocols，Quorum-based Replication，Transaction Protocols等。
-- Transaction Protocols：用于管理分布式事务，确保在多个节点上执行的操作要么全部成功，要么全部失败，例如2PC等。
-- Leader Election Protocols：用于在分布式系统中选举一个领导者节点，以协调和管理其他节点，例如Bully等。
-- Membership Protocols：用于管理分布式系统中的节点成员资格，包括节点的加入、离开和失败检测，例如SWIM (Scalable Weakly-consistent Infection-style Membership)等。
-
-下表简要列出了常见的大数据系统中的资源抽象与它们应满足的属性：
-
-| System                     | Resource Abstraction       | Medium       | C                     | R                     | U                     | D                     |
-|----------------------------|----------------------------|--------------|-----------------------|-----------------------|-----------------------|-----------------------|
-| Key-Value Store            | Key-value pairs            | Memory, Local Storage | Consistency, Partition Tolerance | Consistency, Availability | Consistency, Mutual Exclusion | Consistency, Availability |
-| Distributed File System    | Files and directories      | Local Storage | Fault Tolerance, Data Locality | Scalability, Fault Tolerance | Fault Tolerance, Concurrency Control | Fault Tolerance |
-| Relational Database        | Tables, rows, columns      | Local Storage | ACID, Consistency     | ACID, Concurrency Control | ACID, Concurrency Control | ACID, Consistency     |
-| Batch Processing System    | Large datasets             | Local Storage | Scalability           | Data Locality         | -                     | -                     |
-| MapReduce                  | Tasks                      | Local Storage | Scalability           | Data Locality         | Fault Tolerance       | Fault Tolerance       |
-| MapReduce                  | Data blocks                | Local Storage | Scalability           | Data Locality         | Fault Tolerance       | Fault Tolerance       |
-| MongoDB                    | Documents                  | Memory, Local Storage | Consistency, Partition Tolerance | Consistency, Availability | Consistency, Mutual Exclusion | Consistency, Availability |
-| Graph Database             | Nodes and edges            | Memory, Local Storage | Consistency, Fault Tolerance | Consistency, Availability | Consistency, Concurrency Control | Consistency, Fault Tolerance |
-| Pregel Model               | Vertices and edges         | Memory       | Scalability           | Data Locality         | Concurrency Control   | Fault Tolerance       |
-| Hadoop                     | Files                      | Local Storage | Fault Tolerance, Scalability | Scalability, Fault Tolerance | Fault Tolerance, Concurrency Control | Fault Tolerance |
-| Hadoop                     | Tasks                      | Local Storage | Fault Tolerance, Scalability | Scalability, Fault Tolerance | Fault Tolerance, Concurrency Control | Fault Tolerance |
-| Hive                       | Tables                     | Local Storage | Scalability, Consistency | Consistency, Scalability | Concurrency Control   | Scalability, Consistency |
-| Hive                       | Rows, columns              | Local Storage | Scalability, Consistency | Consistency, Scalability | Concurrency Control   | Scalability, Consistency |
-| Storm                      | Streams                    | Memory       | High Performance, Scalability | High Performance, Fault Tolerance | Fault Tolerance, Concurrency Control | Scalability, Fault Tolerance |
-| Storm                      | Tuples                     | Memory       | High Performance, Scalability | High Performance, Fault Tolerance | Fault Tolerance, Concurrency Control | Scalability, Fault Tolerance |
-| Spark                      | RDD (Resilient Distributed Dataset) | Memory, Local Storage | Fault Tolerance, Data Locality | High Performance, Data Locality | Fault Tolerance, Concurrency Control | Fault Tolerance |
-| Spark                      | Tasks                      | Memory, Local Storage | Fault Tolerance, Data Locality | High Performance, Data Locality | Fault Tolerance, Concurrency Control | Fault Tolerance |
-
 ## 课程简介
 
 ### 分布式与并行计算技术
@@ -103,7 +55,7 @@
 
   - **流数据处理算法**：研究在资源有限的情况下高效挖掘数据流的统计特征的算法，讨论其在实时数据分析中的应用。
 
-    **大数据检索**：分析KD树和局部敏感哈希（LSH）等大规模数据检索算法，探讨其在高维数据空间中的应用和优化策略。
+   - **大数据检索**：分析KD树和局部敏感哈希（LSH）等大规模数据检索算法，探讨其在高维数据空间中的应用和优化策略。
 
 ### 跨模态智能计算
 
